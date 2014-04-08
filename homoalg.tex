@@ -1,0 +1,303 @@
+%% Basierend auf einer TeXnicCenter-Vorlage von Mark Müller
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Wählen Sie die Optionen aus, indem Sie % vor der Option entfernen  
+% Dokumentation des KOMA-Script-Packets: scrguide
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Optionen zum Layout des Artikels                                  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[%
+%a5paper,             % alle weiteren Papierformat einstellbar
+%landscape,           % Querformat
+%10pt,                % Schriftgröße (12pt, 11pt (Standard))
+%BCOR1cm,             % Bindekorrektur, bspw. 1 cm
+%DIVcalc,             % führt die Satzspiegelberechnung neu aus
+%                       s. scrguide 2.4
+%twoside,             % Doppelseiten
+%twocolumn,           % zweispaltiger Satz
+halfparskip*,       % Absatzformatierung s. scrguide 3.1
+%headsepline,         % Trennline zum Seitenkopf  
+%footsepline,         % Trennline zum Seitenfuß
+titlepage,            % Titelei auf eigener Seite
+%normalheadings,      % Überschriften etwas kleiner (smallheadings)
+%idxtotoc,            % Index im Inhaltsverzeichnis
+%liststotoc,          % Abb.- und Tab.verzeichnis im Inhalt
+bibtotoc,           % Literaturverzeichnis im Inhalt
+%abstracton,          % Überschrift über der Zusammenfassung an 
+%leqno,               % Nummerierung von Gleichungen links
+%fleqn,               % Ausgabe von Gleichungen linksbündig
+%draft                % überlangen Zeilen in Ausgabe gekennzeichnet
+DIV = 15,
+headsepline,
+openany,
+BCOR=0.8cm,
+pointlessnumbers,        %keine Punkte nach Überschriften
+chapterprefix=true
+]
+{scrbook}
+
+
+
+%% Deutsche Anpassungen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+
+\usepackage{lmodern} %Type1-Schriftart für nicht-englische Texte
+
+\usepackage{amsmath,amssymb,MnSymbol}
+\usepackage{xcolor}
+
+
+\usepackage{enumitem}
+\setlist[enumerate]{label=(\arabic*)}
+
+
+%% Packages für Grafiken & Abbildungen %%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx} %%Zum Laden von Grafiken
+%\usepackage{subfig} %%Teilabbildungen in einer Abbildung
+\usepackage{calc}
+
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning,backgrounds}
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+\usepackage{tikzpagenodes}
+\usepackage{tikz-cd} %%PSTricks - nicht verwendbar mit pdfLaTeX
+\usepackage[colorlinks=false, pdfborder={0 0 0}]{hyperref}
+\usepackage[nameinlink,german]{cleveref}
+
+\usepackage{listings}
+\usepackage[automark]{scrpage2} % Headline styles 
+
+
+%% Listings setup %%%%%%%%%%%%%%%%
+\lstset{
+  mathescape = true,
+  basicstyle = \small\normalfont\sffamily,
+  frame = tb,
+  framexleftmargin = 15pt,
+% numbers = left,
+  numberstyle = \tiny,
+% numbersep = 5pt,
+  breaklines = true,
+  xleftmargin = 0.1\linewidth,
+  xrightmargin = 0.1\linewidth,
+  escapeinside = {(*}{*)},
+  tabsize=3,
+  morekeywords={if, and, or, is, then, else, endif, while, endwhile, for, from,
+  to, do, endfor, Input, Output, Algorithmus, return},
+  morecomment=[l]{//},
+  columns=flexible
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Style Anpassungen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage[sc]{mathpazo}
+%\renewcommand{\sfdefault}{fav}
+%\setkomafont{disposition}{\sffamily}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Theorems %%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{plain}
+\theorembodyfont{\itshape}
+\newtheorem{satz}{Satz}[chapter]
+\newtheorem{lemma}[satz]{Lemma}
+\newtheorem{kor}[satz]{Korollar}
+\newtheorem{prop}[satz]{Proposition}
+\newtheorem{algorithmus}[satz]{Algorithmus}
+
+
+\theoremstyle{plain}
+\theoremheaderfont{\normalfont\sffamily\itshape}
+\theorembodyfont{\normalfont}
+\newtheorem{bemerkung}[satz]{Bemerkung}
+\newtheorem{beispiel}[satz]{Beispiel}
+                                     
+\theoremstyle{plain}
+\theoremheaderfont{\normalfont\sffamily\bfseries}
+\theorembodyfont{\normalfont}
+\newtheorem{definition}[satz]{Definition}
+\newtheorem{deflemma}[satz]{Definition/Lemma}
+
+\newtheorem{notation}[satz]{Notation}
+
+\theoremstyle{nonumberplain}
+\theoremindent0pt
+\theoremheaderfont{\sffamily\itshape}
+\theorembodyfont{\normalfont}
+\theoremsymbol{\ensuremath{_\square}}
+\newtheorem{proof}{Beweis}
+\qedsymbol{\ensuremath{_\square}}
+
+
+%% Autoref Names %%%%%%%%%%%%%%%%%
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{equation}{Gleichung}{Gleichungen}
+\crefname{definition}{Definition}{Definitionen}
+\crefname{algorithmus}{Algorithmus}{Algorithmen}
+\crefname{kor}{Korollar}{Korollare}
+\crefname{satz}{Satz}{Sätze}
+
+%% Amsmath options %%%%%%%%%%%%%%%%%
+\numberwithin{equation}{chapter}
+\allowdisplaybreaks
+
+%% Pagestyle %%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{scrpage2}
+\addtokomafont{pagenumber}{\sffamily}
+\addtokomafont{pagehead}{\sffamily\upshape}
+\pagestyle{scrheadings}
+
+
+%% titlesec %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{titlesec}
+  
+%\titleformat{\chapter}[display]
+%  {\normalfont\sffamily\huge\bfseries\color{mycol!95}}
+%  {\color{gray}\chaptertitlename~\thechapter}{}{}
+
+%\titleformat{\section}[hang]%
+%  {\normalfont\sffamily\huge\bfseries\color{mycol!95}}%
+%  {\color{gray}\thesection\hspace{1ex}\raisebox{-0.1\baselineskip}{\rule{1pt}{.8\baselineskip}}}{1ex}{}
+
+%\titleformat{\subsection}[hang]%
+%  {\normalfont\sffamily\Large\bfseries\color{mycol!95}}%
+%  {\color{gray}\thesubsection\hspace{1ex}\raisebox{-0.1\baselineskip}{\rule{0.5pt}{.8\baselineskip}}}{1ex}{}
+
+  
+%\titleformat{\subsubsection}[hang]%
+%  {\normalfont\sffamily\large\bfseries\color{mycol!95}}%
+%  {\color{gray}\thesubsubsection\hspace{1ex}\raisebox{-0.1\baselineskip}{\rule{0.5pt}{.8\baselineskip}}}{1ex}{}
+
+
+%% Makros %%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\A}{\ensuremath \mathbb{A}}
+\newcommand{\R}{\ensuremath \mathbb{R}}
+\newcommand{\N}{\ensuremath \mathbb{N}}
+\newcommand{\Q}{\ensuremath \mathbb{Q}}
+\newcommand{\Z}{\ensuremath \mathbb{Z}}
+\newcommand{\C}{\ensuremath \mathbb{C}}
+\newcommand{\F}{\ensuremath \mathbb{F}}
+\newcommand{\K}{\ensuremath \mathbb{K}}
+\renewcommand{\P}{\ensuremath \mathbb{P}}
+\newcommand{\Kb}{\ensuremath \overline K}
+\renewcommand{\O}{\ensuremath \mathcal{O}}
+\renewcommand{\L}{\ensuremath \mathcal{L}}
+\renewcommand{\l}{\ensuremath \ell}
+\renewcommand{\S}{\ensuremath\mathcal{S}}
+\newcommand{\m}{\ensuremath \mathfrak{m}}
+\newcommand{\speq}[1]{\ #1\ }
+\newcommand{\const}{\ensuremath \mathrm{const}}
+\newcommand{\divp}[1]{\ensuremath [#1]} %Divisorpunkt
+\newcommand{\probn}[1]{{\sffamily #1}} %Problem Name
+
+\let\div\undefined
+\DeclareMathOperator{\charak}{char}
+\DeclareMathOperator{\div}{div}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\summ}{sum}
+\DeclareMathOperator{\comp}{\circ}
+\DeclareMathOperator{\ggT}{ggT}
+\DeclareMathOperator{\kgV}{kgV}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Div0}{Div^0}
+\DeclareMathOperator{\Divv}{Div}
+\DeclareMathOperator{\Pic0}{Pic^0}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Ord}{Ord}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\id}{id}
+
+
+\newcommand{\funcdef}[1]{%
+  \begin{array}[t]{>{\displaystyle}r>{\displaystyle}c>{\displaystyle}l}%
+  #1\end{array}}
+
+
+
+%% Others  %%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\?}{{\huge \color{red} ?}}
+\newcommand{\TODO}{{\sffamily\bfseries\large \color{red} TODO}}
+
+\newcommand{\overbox}[2]{\ensuremath\begin{array}[b]{c}%
+  \makebox[0pt]{\fbox{\scriptsize#2}}\\[-2pt]\text{\small$\downarrow$}\\[-3pt]%
+  {\displaystyle#1}\end{array}}%
+
+\let\marginparold\marginpar
+\renewcommand{\marginpar}[1]{\marginparold{\scriptsize\sffamily #1}}
+
+%% Bibliographiestil %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{biblatex}
+\addbibresource{bib.bib}
+
+
+
+
+\begin{document}
+
+%% Trennungen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\frontmatter
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Ihr Artikel                                                       %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Angaben zur Standardformatierung des Titels %%%%%%%%%%%%%%%%%%%%%%%%
+%\titlehead{Titelkopf }
+\subject{Vorlesungszusammenfassung}
+\title{Homologische Algebra}
+%\subtitle{Grundlegende Resultate zu elliptischen Kurven, Konstruktionen und
+%Eigenschaften der Weil-Paarung, ein
+%algorithmischer Überblick zu elliptischen Kurven in der Kryptographie und die
+%kryptographische Anwendung der Weil-Paarung mit Hilfe des MOV-Algorithmus}
+\author{Stefan Hackenberg}
+%\and{Der Name des Co-Autoren}
+%\thanks{Fußnote}     % entspr. \footnote im Fließtext
+%\date{}              % falls anderes, als das aktuelle gewünscht
+
+%% Widmungsseite %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle             % Titelei wird erzeugt
+
+%% Zusammenfassung nach Titel, vor Inhaltsverzeichnis %%%%%%%%%%%%%%%%%
+\begin{abstract}
+  Was soll man sagen? Es ist Homolgische Algebra\dots
+\end{abstract}
+
+
+\cleardoubleemptypage
+\tableofcontents
+
+%% Der Text %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\include{intro.tex}
+\mainmatter
+\input{vorlesung_01}
+\input{vorlesung_02}
+\input{vorlesung_03}
+\input{vorlesung_04}
+\input{vorlesung_05}
+\input{vorlesung_06}
+\input{vorlesung_07}
+\input{vorlesung_08}
+\input{vorlesung_09}
+\input{vorlesung_10}
+\input{vorlesung_11}
+\input{vorlesung_12}
+
+
+\nocite{*}
+\printbibliography
+\end{document}
