@@ -6,6 +6,7 @@
 *.fls
 *.out
 *.toc
+/latexmk_files/*
 
 ## Intermediate documents:
 *.dvi
