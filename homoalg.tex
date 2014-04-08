@@ -104,6 +104,7 @@ chapterprefix=true
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Theorems %%%%%%%%%%%%%%%%%%%%%%
+\usepackage{ntheorem}
 
 \theoremstyle{plain}
 \theorembodyfont{\itshape}
@@ -235,8 +236,8 @@ chapterprefix=true
 \renewcommand{\marginpar}[1]{\marginparold{\scriptsize\sffamily #1}}
 
 %% Bibliographiestil %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{biblatex}
-\addbibresource{bib.bib}
+%\usepackage{biblatex}
+%\addbibresource{bib.bib}
 
 
 
@@ -262,7 +263,7 @@ chapterprefix=true
 %Eigenschaften der Weil-Paarung, ein
 %algorithmischer Überblick zu elliptischen Kurven in der Kryptographie und die
 %kryptographische Anwendung der Weil-Paarung mit Hilfe des MOV-Algorithmus}
-\author{Stefan Hackenberg}
+\author{Maximilian Huber \and Stefan Hackenberg}
 %\and{Der Name des Co-Autoren}
 %\thanks{Fußnote}     % entspr. \footnote im Fließtext
 %\date{}              % falls anderes, als das aktuelle gewünscht
@@ -272,9 +273,9 @@ chapterprefix=true
 \maketitle             % Titelei wird erzeugt
 
 %% Zusammenfassung nach Titel, vor Inhaltsverzeichnis %%%%%%%%%%%%%%%%%
-\begin{abstract}
-  Was soll man sagen? Es ist Homolgische Algebra\dots
-\end{abstract}
+%\begin{abstract}
+  %Was soll man sagen? Es ist Homolgische Algebra\dots
+%\end{abstract}
 
 
 \cleardoubleemptypage
@@ -298,6 +299,6 @@ chapterprefix=true
 \input{vorlesung_12}
 
 
-\nocite{*}
-\printbibliography
+%\nocite{*}
+%\printbibliography
 \end{document}
