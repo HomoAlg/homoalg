@@ -34,11 +34,26 @@
 \end{bemerkung}
 
 \begin{beispiel}[Veranschaulichung verschiedener topologischer $n$-Simplizes]
-  \begin{description}
-    \item[$n=0$] \Bild
-    \item[$n=1$] \Bild
-    \item[$n=2$] \Bild
-  \end{description}
+  \makebox{}
+  \begin{center}
+    \begin{tabular}{c@{\qquad}c@{\qquad}c}
+      $n=1$ & $n=0$ & $n=2$ \\
+      \begin{tikzpicture}
+          \path (0,0) node[dotnode]{} node[below] {$e_0$};
+      \end{tikzpicture} & 
+      \begin{tikzpicture}
+        \path[line normal, filled]  
+          (0,0) node[dotnode]{} node[below] {$e_0$} -- 
+          (1,0) node[dotnode]{} node[below] {$e_1$};
+      \end{tikzpicture} &
+      \begin{tikzpicture}
+        \path[line normal, filled] 
+          (0,0) node[dotnode]{} node[below] {$e_0$} -- 
+          (1,0) node[dotnode]{} node[below] {$e_1$} -- 
+          (0,1) node[dotnode]{} node[above] {$e_3$} -- cycle;
+      \end{tikzpicture}
+    \end{tabular}
+  \end{center}
 \end{beispiel}
 
 

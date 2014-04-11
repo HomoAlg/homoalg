@@ -68,7 +68,11 @@ chapterprefix=true
 \pgfdeclarelayer{foreground}
 \pgfsetlayers{background,main,foreground}
 \usepackage{tikzpagenodes}
-\usepackage{tikz-cd} %%PSTricks - nicht verwendbar mit pdfLaTeX
+\usepackage{tikz-cd} 
+
+\input{mytikzstyles}
+
+
 \usepackage[colorlinks=false, pdfborder={0 0 0}]{hyperref}
 \usepackage[nameinlink,german]{cleveref}
 
@@ -181,6 +185,7 @@ chapterprefix=true
 
 
 %% Makros %%%%%%%%%%%%%%%%%%%%%%
+\let\theta\vartheta
 \newcommand{\U}{\ensuremath \mathcal{U}}
 \newcommand{\A}{\ensuremath \mathbb{A}}
 \newcommand{\R}{\ensuremath \mathbb{R}}
@@ -219,6 +224,7 @@ chapterprefix=true
 \DeclareMathOperator{\Ord}{Ord}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\sk}{sk}
 
 
 \newcommand{\funcdef}[1]{%
@@ -241,6 +247,8 @@ chapterprefix=true
 
 \newcommand{\inv}{^{-1}}
 \let\dell\partial
+
+\newcommand{\subk}[1]{_{(#1)}}
 
 %% Bibliographiestil %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{biblatex}

@@ -1,0 +1,232 @@
+\begin{definition}[Inneres, induzierte Abbildung]
+  Das \emph{Innere von $\Delta_n$} ist 
+  \begin{align*}
+    \mathring\Delta_n \speq{&:=} \begin{cases}
+    \text{top. Inneres von } \Delta_n & n \geq 1 \\
+    \Delta_0 & n =0
+    \end{cases} \\
+    \speq{&=} \{ (x_0,\ldots, x_n) \in \Delta^n \mid x_i > 0\}
+  \end{align*}
+  Ferner heißt 
+  \[ \mathring\tau:\ \coprod_{n\geq 0} \Delta_n \times X_{(n)} \to |X| \]
+  die \emph{durch $\tau$ induzierte Abbildung}.
+\end{definition}
+
+
+\subsection{Proposition}
+
+\begin{prop}
+  \label{prop:tau-bijektion}
+  $\mathring\tau$ ist eine mengentheoretische Bijektion.
+\end{prop}
+\begin{proof}
+  Für ein $(s,x) \in \Delta_n \times X_{(n)}$ sei sein \emph{Index} $k(s,x)$
+  als die minimale Dimension einer Seite gegeben, die $s$ enthält.
+  $R$-äquivalente Punkte haben den selben Index. Damit ist 
+  $k: |X| \to \N_0$ eine wohldefinierte Abbildung.
+  Es gilt $k(s,x) = k$, wenn $s \in \mathring\Delta_k$.
+  
+  Ist dann $p \in |X|$ mit $k(p) = k$, so gibt es (mind.) einen Repräsentanten
+  $(s,x)$ mit $(s,x) \in \mathring\Delta_k \times X\subk k$.
+  Damit ist gezeigt, dass $\mathring \tau$ surjektiv ist.
+
+  Bleibt noch die Injektivität von $\mathring\tau$ zu zeigen:
+  Seien $(s,x), (s',x') \in \coprod_{n\geq 0} \mathring\Delta_n \times X\subk n$ mit
+  $(s,x) \overset R \sim (s',x')$. Zu zeigen ist damit $(s,x) = (s',x')$.
+  Nach obiger Vorüberlegung ist $k(s,x) = k(s',x')$, d.h. 
+  $x,x' \in X\subk k$.
+  Wir haben 
+  \begin{center}
+  \begin{tikzcd}
+    (s,x) \rar[mapsto]{f_1} & (s_1,x_1) &
+    (s_2,x_2) \lar[mapsto,swap]{f_2} \rar[mapsto]{f_3} &
+    (s_3,x_3) & \ldots\lar[mapsto] & (s',x') \lar[mapsto] 
+  \end{tikzcd}
+  \end{center}
+  mit $(s_i,x_i) \in \Delta_{l_i} \times X\subk{l_i}$ und $l_i \geq k$.
+  Aus dieser Kette können wir eine Kette kleinerer Länge konstruieren
+  $f_1: [k] \to [l_1]$, $f_2:[l_2]\to[l_1]$ streng monoton mit 
+  $s_1 = \Delta_{f_1}(s) = \Delta_{f_2}(s_2)$.
+  Da $s\in \mathring\Delta_k$, liegt $s_1$ im Inneren der $f_1$-Seite von
+  $\Delta_{l_1}$.
+  Damit ist $\im f_2 \supseteq \im f_1$ und ergo $f_1 = f_2 \circ f$ für 
+  (genau) ein streng monotones $f: [k]\to[l_2]$.
+
+  Es gilt dann 
+  \[ \Delta_{f_2}\Delta_f(s) = \Delta_{f_2\circ f}(s) = 
+    \Delta_{f_1}(s) = s_1 = \Delta_{f_2}(s_2)\,. \]
+  Da $\Delta_{f_2}$ injektiv ist, folgt
+  $\Delta_f(s) = s_2$. Außerdem ist
+  \[ X(f)(x_2) = X(f)\big( X(f_2)(x_1) \big) = 
+    X(f_2\circ f)(x_1) = X(f_1)(x_1) = x \,.\]
+  Also folgt:
+  \begin{center}
+    \begin{tikzcd}
+      (s,x) \rar[mapsto]{f} \ar[mapsto, bend right]{rr}{f_3\circ f}
+      & (s_2,x_2) \rar[mapsto]{f_3} & (s_3,x_3) 
+      & (s_4,x_4) \lar[mapsto] \rar[mapsto] & \ldots
+    \end{tikzcd}
+  \end{center}
+  Nach endlich vielen Schritten erhalten wir also 
+  $(s,x) \overset f \longmapsto (s',x')$ mit $x,x' \in X\subk k$. Folglich ist
+  $f: [k] \to [k]$ und damit die Identität, woraus die Injektivität folgt.
+\end{proof}
+
+
+\subsection{Skelett}
+
+\begin{definition}[$k$-Skelett]
+  Das \emph{$k$-Skelett} einer Triangulierung $(X\subk i, X(f))$ ist
+  die Triangulierung 
+  \[ (X\subk i, i\leq k; X(f))\,. \]
+  Der zugehörige topologie Raum $\sk_k |X|$ ist das \emph{$k$-Skelett von $|X|$}.
+\end{definition}
+
+
+\begin{beispiel}
+  Sei $(X\subk i, X(f))$
+  \begin{tikzpicture}[baseline=10pt]
+    \path[draw=blue, line width=1pt, fill=lime!15]
+      (0,0) node[dotnode, red] {}--
+      (1,0) node[dotnode, red] {}--
+      (0,1) node[dotnode, red] {}-- cycle;
+  \end{tikzpicture}
+  so ist das $0$-Skelett 
+  \begin{tikzpicture}[baseline=10pt] 
+    \path
+      (0,0) node[dotnode, red] {}--
+      (1,0) node[dotnode, red] {}--
+      (0,1) node[dotnode, red] {}-- cycle;
+  \end{tikzpicture},
+  das $1$-Skelett 
+  \begin{tikzpicture}[baseline=10pt] 
+    \path[draw=blue, line width=1pt]
+      (0,0) node[dotnode, red] {}--
+      (1,0) node[dotnode, red] {}--
+      (0,1) node[dotnode, red] {}-- cycle;
+  \end{tikzpicture}
+  und das $2$-Skelett 
+  \begin{tikzpicture}[baseline=10pt] 
+    \path[draw=blue, line width=1pt, fill=lime!15]
+      (0,0) node[dotnode, red] {}--
+      (1,0) node[dotnode, red] {}--
+      (0,1) node[dotnode, red] {}-- cycle;
+  \end{tikzpicture}.
+\end{beispiel}
+
+
+\begin{kor}
+  Es gilt:
+  \begin{enumerate}
+    \item $|X| = \sk_\infty |X| = \bigcup_{k\geq 0} \sk_k |X|$
+    \item Die natürlichen Abbildungen $\sk_k |X| \to \sk_l|X|$ für
+      $k\leq l$ sind abgeschlossene Einbettungen.
+    \item $\sk_{k+1} |X|$ entsteht aus $\sk_k|X|$ durch Hinzufügen offener
+      $(k+1)$-Simplizes, deren Ränder mit $\sk_k|X|$ verklebt werden.
+  \end{enumerate}
+\end{kor}
+\begin{proof}
+  Klar mit \thref{prop:tau-bijektion}.
+\end{proof}
+
+
+\subsection{Triangulation des Produktes zweier Simplizes}
+
+Wir wollen eine kanonische Triangulierung $(X\subk n, X(f)$ von
+$\Delta_p\times \Delta_q$ explizit angeben.
+
+\begin{beispiel}
+  Für $p = 1$ und $q=1$ können wir uns anschaulich folgende Triangulierung
+  überlegen:
+  \begin{center}
+    \begin{tikzpicture}
+      \path[line normal, filled]
+        (0,0) node[dotnode] {} node[below] {$00$}
+          --node[below] {$\Delta_p$}
+        (2,0) node[dotnode] {} node[below] {10}
+          -- 
+        (2,2) node[dotnode] {} node[above] {11}
+          --
+        (0,2) node[dotnode] {} node[above] {01}
+          -- node[left] {$\Delta_q$} 
+        cycle;
+      \path[line normal, dashed] (0,0) -- (2,2);
+      \node at (1,1) {$\Delta_p\times\Delta_q$};
+    \end{tikzpicture}
+  \end{center}
+\end{beispiel}
+
+
+\begin{definition}[kanonische Triangulierung von $\Delta_p\times\Delta_q$]
+  Die \emph{kanonische Triangulierung $(X\subk n, X(f))$ von 
+  $\Delta_p\times\Delta_q$} ist gegeben durch:
+  \begin{enumerate}
+    \item Ein Element von $X\subk n$ (multidimensionale Diagonale)
+      ist eine Menge von $(n+1)$ paarweise verschiedenen Paaren
+      \[ \{(i_0,j_0), (i_1,j_1), \ldots, (i_n,j_n)\}\]
+      mit $0\leq i_0\leq i_1 \leq\ldots\leq i_n \leq p$
+      und $0\leq j_0 \leq j_1 \leq \ldots \leq j_n\leq q$.
+    \item Für $f:[m] \to [n]$ streng monoton sei
+      \[ X(f)(\{(i_0,j_0), \ldots, (i_n,j_n)\}) \speq=
+        \{(i_{f(0)}, j_{f(0)}), \ldots, (i_{f(m)}, j_{f(m)})\} \,.\]
+  \end{enumerate}
+\end{definition}
+
+
+\begin{definition}
+  \[ \theta_n: \Delta_n \times X\subk n \to \Delta_p\times\Delta_q\]
+  sodass $\theta_n(\_,x): \Delta_n \to \Delta_p\times\Delta_q \subseteq 
+  \R^{p+q+2}$ diejenige lineare, ordnungserhaltende Abbildung ist, deren Bild
+  $\tilde\Delta_n$ ist, wobei $\tilde\Delta_n\subseteq\R^{p+q+2}$ derjenige
+  $n$-Simplex ist, der durch $(e_{ik},e_{jk}')$ aufgespannt wird für
+  $x = \{(i_0,j_0),\ldots,(i_n,j_n)\}$.
+\end{definition}
+
+\begin{lemma}
+  Sei $|X|$ die geometrische Realisierung von $(X\subk n, X(f))$. Dann
+  existiert ein kommutatives Diagramm
+  \begin{center}
+    \begin{tikzcd}
+      {} & \coprod\Delta_n\times X\subk n 
+        \ar{dl}{\tau} \ar{dr}{\coprod\theta_n := \theta} & \\
+      {} |X| \ar[dashed]{rr}{\exists!}[swap]{\tilde\varphi}& &
+        \Delta_p \times\Delta_q
+    \end{tikzcd}
+  \end{center}
+  wobei $\phi$ eine Bijektion ist.
+\end{lemma}
+\begin{proof}
+  Da $\tau$ surjektiv, existiert höchstens ein $\varphi$. Sei 
+  $(t,y) \overset f \longmapsto (s,x)$, d.h. $s = \Delta_f(t)$, 
+  $y = X(f)(x)$.
+  \[ \theta(s,x) = \theta(\Delta_f(t),x) = \theta(t, X(f)(x))
+    = \theta(t,y)\,.\]
+  Also existiert genau ein $\varphi$.
+
+  Wir zeigen nun, dass $\theta$ surjektiv ist, damit ist auch $\varphi$
+  surjektiv.
+  Sei $\Delta_p = \{ (x_0,\ldots, x_p) \mid x_i\geq 0, \sum x_i = 1\}$
+  und $\Delta_q = \{ (y_0,\ldots,y_p) \mid y_j\geq 0, \sum y_j = 1\}$
+  Führe nun neue Koordinaten ein:
+  \begin{align*}
+    \xi_1 &= x_0,\quad \xi_2 = x_0+x_1,\quad\ldots,\quad 
+      \xi_p = x_0 + \ldots + x_{p-1}\\
+    \eta_1 &= y_0, \quad \eta_2 = y_0+y_1, \quad\ldots,\quad 
+      \eta_q = y_0 + \ldots + y_{q-1}
+  \end{align*}
+  In diesen Koordinaten gilt:
+  \[ e_i = (\underbrace{0,\ldots,0}_i, \underbrace{1,\ldots,1}_{p-i}),\quad
+  e_j = (\underbrace{0,\ldots,0}_j, \underbrace{1,\ldots,1}_{q-j}) \]
+  Sei $x = \{(i_0,j_0) ,\ldots, (i_{p+p},j_{p+q})\} \in X\subk{p+q}$ mit
+  $(i_0,j_0) = (0,0)$ und $(i_{p+q},j_{p+q}) = (p,q)$.
+  Das Bild $\theta(\Delta_{p+q}, x)$ besteht aus allen Paaren
+  $\big( (\xi_1,\ldots,\xi_p),(\eta_1,\ldots,\eta_q) \big) \in 
+  \Delta_p\times\Delta_q$ mit $0\leq \xi_i,\eta_j\leq 1$, wobei alle
+  $\xi_i,\eta_j$ angeordnet sind und gilt:
+  \begin{enumerate}[label=(\roman*)]
+    \item Ist $i<j$, so steht $\xi_i$ vor $\xi_j$ und $\eta_i$ vor $\eta_j$
+      und ist $j_{k+1} = j_k$, so steht an $(k+1)$-ter Stelle
+      ein $\xi$, sonst ein $\eta$.
+  \end{enumerate}
+\end{proof}
+
