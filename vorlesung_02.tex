@@ -37,10 +37,14 @@
   $x,x' \in X\subk k$.
   Wir haben 
   \begin{center}
-  \begin{tikzcd}
-    (s,x) \rar[mapsto]{f_1} & (s_1,x_1) &
-    (s_2,x_2) \lar[mapsto,swap]{f_2} \rar[mapsto]{f_3} &
-    (s_3,x_3) & \ldots\lar[mapsto] & (s',x') \lar[mapsto] 
+  \begin{tikzcd}[row sep=tiny, column sep=normal]
+    {} & (s_1,x_1) &
+    {} & (s_3,x_3) &
+    {} & \dots \\
+    (s,x) \urar[mapsto]{f_1} & {} &
+    (s_2,x_2) \ular[mapsto,swap]{f_2} \urar[mapsto]{f_3} & {} &
+    \ldots \ular[mapsto] \urar[mapsto] & {} &
+    (s',x') \ular[mapsto]
   \end{tikzcd}
   \end{center}
   mit $(s_i,x_i) \in \Delta_{l_i} \times X\subk{l_i}$ und $l_i \geq k$.
@@ -78,7 +82,7 @@
 \begin{definition}[$k$-Skelett]
   Das \emph{$k$-Skelett} einer Triangulierung $(X\subk i, X(f))$ ist
   die Triangulierung 
-  \[ (X\subk i, i\leq k; X(f))\,. \]
+  \[ (X\subk i, i\leq k; X(f))\,. \] %TODO: Benennung ist hier inkonsistent
   Der zugehörige topologische Raum $\sk_k |X|$ ist das \emph{$k$-Skelett von $|X|$}.
 \end{definition}
 
@@ -146,19 +150,19 @@ $\Delta_p\times \Delta_q$ explizit angeben.
   Für $p = 1$ und $q=1$ können wir uns anschaulich folgende Triangulierung
   überlegen:
   \begin{center}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[scale=1.4]
       \path[line normal, filled]
-        (0,0) node[dotnode] {} node[below] {$00$}
-          --node[below] {$\Delta_p$}
-        (2,0) node[dotnode] {} node[below] {10}
+        (0,0) node[dotnode] {} node[below] {$(0,0)$}
+          -- node[below] {$\Delta_p$}
+        (2,0) node[dotnode] {} node[below] {$(1,0)$}
           -- 
-        (2,2) node[dotnode] {} node[above] {11}
+        (2,2) node[dotnode] {} node[above] {$(1,1)$}
           --
-        (0,2) node[dotnode] {} node[above] {01}
+        (0,2) node[dotnode] {} node[above] {$(0,1)$}
           -- node[left] {$\Delta_q$} 
         cycle;
       \path[line normal, dashed] (0,0) -- (2,2);
-      \node at (1,1) {$\Delta_p\times\Delta_q$};
+      \node at (.6,1.7) {$\Delta_p\times\Delta_q$};
     \end{tikzpicture}
   \end{center}
 \end{beispiel}
@@ -181,8 +185,9 @@ $\Delta_p\times \Delta_q$ explizit angeben.
 
 
 \begin{definition}
+  Sei
   \[ \theta_n: \Delta_n \times X\subk n \to \Delta_p\times\Delta_q\]
-  sodass $\theta_n(\_,x): \Delta_n \to \Delta_p\times\Delta_q \subseteq 
+  so, dass $\theta_n(\_,x): \Delta_n \to \Delta_p\times\Delta_q \subseteq 
   \R^{p+q+2}$ diejenige lineare, ordnungserhaltende Abbildung ist, deren Bild
   $\tilde\Delta_n$ ist, wobei $\tilde\Delta_n\subseteq\R^{p+q+2}$ derjenige
   $n$-Simplex ist, der durch $(e_{ik},e_{jk}')$ aufgespannt wird für
@@ -193,14 +198,14 @@ $\Delta_p\times \Delta_q$ explizit angeben.
   Sei $|X|$ die geometrische Realisierung von $(X\subk n, X(f))$. Dann
   existiert ein kommutatives Diagramm
   \begin{center}
-    \begin{tikzcd}
+    \begin{tikzcd}[row sep=normal, column sep=small]
       {} & \coprod\Delta_n\times X\subk n 
-        \ar{dl}{\tau} \ar{dr}{\coprod\theta_n =: \theta} & \\
+        \ar{dl}[swap]{\tau} \ar{dr}{\coprod\theta_n =: \theta} & \\
       {} |X| \ar[dashed]{rr}{\overset{\exists!}{\cong}}[swap]{\varphi}& &
         \Delta_p \times\Delta_q
     \end{tikzcd}
   \end{center}
-  wobei $\varphi$ eine Bijektion ist.
+  wobei das eindeutige $\varphi$ eine Bijektion ist.
 \end{lemma}
 \begin{proof}
   Da $\tau$ surjektiv, existiert höchstens ein $\varphi$. Sei 
