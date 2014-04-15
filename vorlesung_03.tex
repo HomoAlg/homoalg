@@ -45,12 +45,12 @@
 
 \begin{definition}
   Die \emph{geometrische Realisierung $|X_\bullet|$} einer simplizialen Menge
-  $X_\bullet$ ist der topologische Raum, dessen zugrunde liegende Menge
+  $X_\bullet$ ist der topologische Raum mit zugrundeliegender Menge
   \[ \big( \coprod \Delta_n \times X_n \big) \big/ R\,,\]
   wobei $R$ die schwächste Äquivalenzrelation ist, für die
-  \[ (s,x) R (t,y) \quad\Leftrightarrow\quad 
+  \[ (s,x) R (t,y) \quad\Longleftarrow\quad
     y = X(f)(x),\ s = \Delta_f(t)\]
-  für eine monotone Abbildung $f:[m]\to [n]$. Die Topologie auf $|X|$ ist
+  für alle monotonen Abbildungen $f:[m]\to [n]$ gilt. Die Topologie auf $|X|$ ist
   wieder die Quotiententopologie.
 \end{definition}
 
@@ -60,7 +60,7 @@
 Sei $(\U_\alpha)_{\alpha \in A}$ eine Überdeckung eines topologischen Raumes
 $Y$ durch offene (bzw. abgeschlossene Teilmengen). Sei
 \[ X_n := \{ (\alpha_0, \ldots, \alpha_n) \in A^{n+1} \mid 
-  \U_{\alpha_0} \cap \ldots \cap \U_{\alpha_n} \neq \emptyset \}\]
+  \U_{\alpha_0} \cap \ldots \cap \U_{\alpha_n} \neq \emptyset \}.\]
 
 \begin{definition}
   $X_\bullet$ heißt \emph{Nerv von $(\U_\alpha)_{\alpha\in A}$}.
@@ -142,7 +142,7 @@ für $f: [n]\to [m]$ monoton, mit $g\circ f = f_1 \circ f_2$ für
 $f_1,f_2$ monoton, $f_1$ injektiv, $f_2$ surjektiv.
 
 \begin{lemma}
-  $\tildeX_\bullet$ ist in der Tat eine simpliziale Menge.
+  $\tilde X_\bullet$ ist in der Tat eine simpliziale Menge.
 \end{lemma}
 \begin{proof}
   Übungsaufgabe.
