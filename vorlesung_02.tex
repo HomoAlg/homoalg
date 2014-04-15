@@ -91,27 +91,34 @@
       (1,0) node[dotnode, red] {}--
       (0,1) node[dotnode, red] {}-- cycle;
   \end{tikzpicture}
-  so ist das $0$-Skelett 
-  \begin{tikzpicture}[baseline=10pt] 
-    \path
-      (0,0) node[dotnode, red] {}--
-      (1,0) node[dotnode, red] {}--
-      (0,1) node[dotnode, red] {}-- cycle;
-  \end{tikzpicture},
-  das $1$-Skelett 
-  \begin{tikzpicture}[baseline=10pt] 
-    \path[draw=blue, line width=1pt]
-      (0,0) node[dotnode, red] {}--
-      (1,0) node[dotnode, red] {}--
-      (0,1) node[dotnode, red] {}-- cycle;
-  \end{tikzpicture}
-  und das $2$-Skelett 
-  \begin{tikzpicture}[baseline=10pt] 
-    \path[draw=blue, line width=1pt, fill=lime!15]
-      (0,0) node[dotnode, red] {}--
-      (1,0) node[dotnode, red] {}--
-      (0,1) node[dotnode, red] {}-- cycle;
-  \end{tikzpicture}.
+  so ist
+  \begin{itemize}
+    \item 
+      das $0$-Skelett 
+      \begin{tikzpicture}[baseline=10pt] 
+        \path
+          (0,0) node[dotnode, red] {}--
+          (1,0) node[dotnode, red] {}--
+          (0,1) node[dotnode, red] {}-- cycle;
+      \end{tikzpicture},
+    \item
+      das $1$-Skelett 
+      \begin{tikzpicture}[baseline=10pt] 
+        \path[draw=blue, line width=1pt]
+          (0,0) node[dotnode, red] {}--
+          (1,0) node[dotnode, red] {}--
+          (0,1) node[dotnode, red] {}-- cycle;
+      \end{tikzpicture}
+      und
+    \item
+      das $2$-Skelett 
+      \begin{tikzpicture}[baseline=10pt] 
+        \path[draw=blue, line width=1pt, fill=lime!15]
+          (0,0) node[dotnode, red] {}--
+          (1,0) node[dotnode, red] {}--
+          (0,1) node[dotnode, red] {}-- cycle;
+      \end{tikzpicture}.
+  \end{itemize}
 \end{beispiel}
 
 
