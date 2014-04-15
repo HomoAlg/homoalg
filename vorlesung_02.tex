@@ -208,37 +208,61 @@ $\Delta_p\times \Delta_q$ explizit angeben.
   wobei das eindeutige $\varphi$ eine Bijektion ist.
 \end{lemma}
 \begin{proof}
-  Da $\tau$ surjektiv, existiert höchstens ein $\varphi$. Sei 
-  $(t,y) \overset f \longmapsto (s,x)$, d.h. $s = \Delta_f(t)$, 
-  $y = X(f)(x)$.
-  \[ \theta(s,x) = \theta(\Delta_f(t),x) = \theta(t, X(f)(x))
-    = \theta(t,y)\,.\]
-  Also existiert genau ein $\varphi$.
-
-  Wir zeigen nun, dass $\theta$ surjektiv ist, damit ist auch $\varphi$
-  surjektiv.
-  Sei $\Delta_p = \{ (x_0,\ldots, x_p) \mid x_i\geq 0, \sum x_i = 1\}$
-  und $\Delta_q = \{ (y_0,\ldots,y_p) \mid y_j\geq 0, \sum y_j = 1\}$
-  Führe nun neue Koordinaten ein:
-  \begin{align*}
-    \xi_1 &= x_0,\quad \xi_2 = x_0+x_1,\quad\ldots,\quad 
-      \xi_p = x_0 + \ldots + x_{p-1}\\
-    \eta_1 &= y_0, \quad \eta_2 = y_0+y_1, \quad\ldots,\quad 
-      \eta_q = y_0 + \ldots + y_{q-1}
-  \end{align*}
-  In diesen Koordinaten gilt:
-  \[ e_i = (\underbrace{0,\ldots,0}_i, \underbrace{1,\ldots,1}_{p-i}),\quad
-  e_j = (\underbrace{0,\ldots,0}_j, \underbrace{1,\ldots,1}_{q-j}) \]
-  Sei $x = \{(i_0,j_0) ,\ldots, (i_{p+p},j_{p+q})\} \in X\subk{p+q}$ mit
-  $(i_0,j_0) = (0,0)$ und $(i_{p+q},j_{p+q}) = (p,q)$.
-  Das Bild $\theta(\Delta_{p+q}, x)$ besteht aus allen Paaren
-  $\big( (\xi_1,\ldots,\xi_p),(\eta_1,\ldots,\eta_q) \big) \in 
-  \Delta_p\times\Delta_q$ mit $0\leq \xi_i,\eta_j\leq 1$, wobei alle
-  $\xi_i,\eta_j$ angeordnet sind und gilt:
-  \begin{enumerate}[label=(\roman*)]
-    \item Ist $i<j$, so steht $\xi_i$ vor $\xi_j$ und $\eta_i$ vor $\eta_j$
-      und ist $j_{k+1} = j_k$, so steht an $(k+1)$-ter Stelle
-      ein $\xi$, sonst ein $\eta$.
+  \begin{enumerate}[label=(\alph*)]
+    \item Da $\tau$ surjektiv, existiert höchstens ein $\varphi$. Sei 
+      $(t,y) \overset f \longmapsto (s,x)$, d.h. $s = \Delta_f(t)$, 
+      $y = X(f)(x)$.
+      \[ \theta(s,x) = \theta(\Delta_f(t),x) = \theta(t, X(f)(x))
+        = \theta(t,y)\,.\]
+      Also existiert genau ein $\varphi$.
+    \item Wir zeigen nun, dass $\theta$ surjektiv ist, damit ist auch $\varphi$
+      surjektiv.
+      Sei $\Delta_p = \{ (x_0,\ldots, x_p) \mid x_i\geq 0, \sum x_i = 1\}$
+      und $\Delta_q = \{ (y_0,\ldots,y_p) \mid y_j\geq 0, \sum y_j = 1\}$
+      Führe nun neue Koordinaten ein:
+      \begin{align*}
+        \xi_1 &= x_0,\quad \xi_2 = x_0+x_1,\quad\ldots,\quad 
+          \xi_p = x_0 + \ldots + x_{p-1}\\
+        \eta_1 &= y_0, \quad \eta_2 = y_0+y_1, \quad\ldots,\quad 
+          \eta_q = y_0 + \ldots + y_{q-1}
+      \end{align*}
+      In diesen Koordinaten gilt:
+      \[ e_i = (\underbrace{0,\ldots,0}_i, \underbrace{1,\ldots,1}_{p-i}),\quad
+      e_j = (\underbrace{0,\ldots,0}_j, \underbrace{1,\ldots,1}_{q-j}) \]
+      Sei $x = \{(i_0,j_0) ,\ldots, (i_{p+p},j_{p+q})\} \in X\subk{p+q}$ mit
+      $(i_0,j_0) = (0,0)$ und $(i_{p+q},j_{p+q}) = (p,q)$.
+      Das Bild $\theta(\Delta_{p+q}, x)$ besteht aus allen Paaren
+      $\big( (\xi_1,\ldots,\xi_p),(\eta_1,\ldots,\eta_q) \big) \in 
+      \Delta_p\times\Delta_q$ mit $0\leq \xi_i,\eta_j\leq 1$, wobei alle
+      $\xi_i,\eta_j$ angeordnet sind und gilt:
+      \begin{enumerate}[label=(\roman*)]
+        \item Ist $i<j$, so steht $\xi_i$ vor $\xi_j$ und $\eta_i$ vor $\eta_j$
+          und ist $j_{k+1} = j_k$, so steht an $(k+1)$-ter Stelle
+          ein $\xi$, sonst ein $\eta$.
+      \end{enumerate}
+    \item Sei $r = \left( (\xi_1,\ldots,\xi_p),(\eta_1,\ldots,\eta_q \right)\in
+      \Delta_p\times\Delta_q$. Wir konstruieren dasjenige Element in 
+      $\coprod \mathring\Delta_n\times X\subk n$, welches von $\theta$ auf $r$
+      abgebildet wird. (Damit ist $\varphi$ injektiv). Das partioniere die
+      $p+q+2$ Zahlen $0,\xi_i,\eta_i,1$ in Pakete jeweils gleicher Zahlen,
+      nummeriert durch $0,1,\ldots,l+1$ mit $0\leq l\leq p+q$ in aufsteigender
+      Reihenfolge.
+      Die Werte seien $0=\gamma_0 < \gamma < \ldots < \gamma_{l+1} = 1$.
+      Sei $x := \{(i_0,j_0),\ldots, (i_l,j_l\} \in X\subk l$ gegeben durch
+      \[i_k := \begin{cases}
+        0 & k = -1,\\
+        i_{k-1} & \text{kein $\xi$ in $k$-ter Gruppe},\\
+        \max\{ i \mid \xi_i \text{ liegt in der $k$-ten Gruppe}\} &
+          \text{sonst}
+        \end{cases}\]
+      und $j_k$ analog zu $i_k$ mit $\eta$ anstatt $\xi$.
+      \marginpar{\Bild zur Veranschaulichung der Tupel für $\Delta_1\times
+      \Delta_1$}
+      Sei $s = (z_0,\ldots,z_l) \in \mathring\Delta_l$ mit $z_i =
+      \gamma_{i+1}-\gamma_i$, $0\leq i\leq l$. Nach Übungsaufgabe 1 Übungsblatt
+      1 gilt nun $\theta\inv(r) = \{(s,x)\}$ 
+     
+     \marginpar{Verwaltung von Übungsaufgaben?}
   \end{enumerate}
 \end{proof}
 

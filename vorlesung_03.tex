@@ -1,0 +1,154 @@
+\section{Simpliziale Mengen}
+
+\begin{definition}[simpliziale Menge, $f$-Seite]
+  Eine \emph{simpliziale Menge} ist eine Familie $X_\bullet = (X_n)_{n\geq
+  0}$ von Mengen und von Abbildungen $X(f):X_n \to X_m$ für jede monotone
+  Abbildung $f:[m]\to [n]$, so dass folgende Bedingungen erfüllt sind:
+  \begin{enumerate}
+    \item $X(\id) = \id$, 
+    \item $X(f\circ g) = X(g)\circ X(f)$.
+  \end{enumerate}
+  Für jede monotone Abbildung $f:[m]\to [n]$ ist die \emph{$f$-Seite} die
+  lineare Abbildung $\Delta_f: \Delta_m\to\Delta_n$ mit $e_i\mapsto e_{f(i)}$.
+\end{definition}
+
+
+\begin{beispiel}
+  \makebox{}
+  \begin{center}
+  \begin{tikzpicture}
+    \path[line normal] (0,0) node[below] {0}
+      -- coordinate (a) (1,1) node[above] {1} ;
+    \path[line normal] (3,0) node[below]{0}
+      -- (4,0) node[below] {1}
+      -- (3.5,1) node[above] {2}
+      -- coordinate (b) cycle;
+
+    \path[line normal, purple,
+      shorten <= 10pt, shorten >= 10pt] 
+      (a) edge[->,bend left] node[above] {$\Delta_f$} (b);
+      
+    \path[line normal, orange,
+      shorten <= 10pt, shorten >= 10pt] 
+      (a) edge[<-,bend right] node[below] {$\Delta_g$} (b);
+  \end{tikzpicture}
+  \quad\begin{minipage}[b]{0.3\textwidth}
+    \[ f: \funcdef{ [1] &\to& [2] \\ 0&\mapsto & 0\\ 1&\mapsto & 2}\]
+    \[ g: \funcdef{ [2] &\to& [1] \\ 0&\mapsto & 0\\ 0&\mapsto & 1}\]
+    \end{minipage}
+  \end{center}
+\end{beispiel}
+
+\begin{bemerkung}
+  $\Delta_f$ ist im Allgemeinen keine Einbettung mehr!
+\end{bemerkung}
+
+\begin{definition}
+  Die \emph{geometrische Realisierung $|X_\bullet|$} einer simplizialen Menge
+  $X_\bullet$ ist der topologische Raum, dessen zugrunde liegende Menge
+  \[ \big( \coprod \Delta_n \times X_n \big) \big/ R\,,\]
+  wobei $R$ die schwächste Äquivalenzrelation ist, für die
+  \[ (s,x) R (t,y) \quad\Leftrightarrow\quad 
+    y = X(f)(x),\ s = \Delta_f(t)\]
+  für eine monotone Abbildung $f:[m]\to [n]$. Die Topologie auf $|X|$ ist
+  wieder die Quotiententopologie.
+\end{definition}
+
+\subsection{Beispiele}
+\subsubsection{Nerv einer Überdeckung}
+
+Sei $(\U_\alpha)_{\alpha \in A}$ eine Überdeckung eines topologischen Raumes
+$Y$ durch offene (bzw. abgeschlossene Teilmengen). Sei
+\[ X_n := \{ (\alpha_0, \ldots, \alpha_n) \in A^{n+1} \mid 
+  \U_{\alpha_0} \cap \ldots \cap \U_{\alpha_n} \neq \emptyset \}\]
+
+\begin{definition}
+  $X_\bullet$ heißt \emph{Nerv von $(\U_\alpha)_{\alpha\in A}$}.
+\end{definition}
+
+\begin{beispiel}
+  \Bild Überdeckung der $S^1$.
+  \ldots mit der geometrischen Realisierung:
+  \begin{center}
+    \begin{tikzpicture}[scale=2]
+      \path (0,0) node[dotnode] (a) {} node[left]{(2), (2,2)}
+      -- (2,0) node[dotnode] (b) {} node[right]{(1), (1,1)}
+      -- (1,1) node[dotnode] (c) {} node[above]{(0), (0,0)}; 
+      \path[line normal, fill=purple!10] 
+        (a) to[bend left=20] node[below=-3pt] {(1,2)} (b)
+          to[bend left=20] node[below] {(2,1)} (a);
+      \path[line normal, fill=purple!10] 
+        (b) to[bend left=20] node[sloped,above=-3pt] {(0,1)} (c)
+          to[bend left=20] node[sloped,above] {(1,0)} (b);
+      \path[line normal, fill=purple!10] 
+        (a) to[bend left=20] node[sloped, above] {(0,2)} (c)
+          to[bend left=20] node[sloped, above=-3pt] {(2,0)} (a);
+    \end{tikzpicture}
+  \end{center}
+\end{beispiel}
+
+\begin{bemerkung}
+  Ist die Überdeckung lokal endlich und sind die nicht-leeren Durchschnitte
+  zusammenziehbar, so ist $|X|$ homotopieäquivalent zu $Y$.
+\end{bemerkung}
+
+
+\subsubsection{Singuläre Simplizes}
+
+\begin{definition}
+  Sei $Y$ ein topologischer Raum. Ein \emph{singulärer $n$-Simplex von $Y$}
+  ist eine stetige Abbildung $\varphi:\Delta_n \to Y$.
+  \[ X_n := \{\varphi:\Delta_n \to Y\text{ sing. $n$-Simplizes}\}\]
+  und
+  \[ X(f)(\varphi) := \varphi\circ \Delta_f\]
+  für alle $f:[m] \to [n]$ monoton. Dies definiert eine simpliziale Menge
+  $X_\bullet$.
+\end{definition}
+
+\begin{bemerkung}
+  $X_\bullet$ ist riesig!
+\end{bemerkung}
+
+\subsubsection{Die simpliziale Menge $\Delta[p]$}
+
+\begin{definition}
+  Sei
+  \begin{align*}
+    \Delta[p]_n \speq{&:=} \{ g: [n]\to [p] \text{ monoton}\}\,, \\
+    \Delta[p](f)(g) \speq{&:=} g\circ f.
+  \end{align*}
+  $\Delta[p]_\bullet$ heißt \emph{simplizialer $p$-Simplex}.
+\end{definition}
+
+\begin{lemma}
+  Es existiert ein kanonischer Homöomorphismus $\Delta_p \to |\Delta[p]|$.
+\end{lemma}
+\begin{proof}
+  Übungsaufgabe.
+\end{proof}
+
+
+\subsubsection{Die einem Verklebedatum zugeordnete simpliziale Menge}
+
+Sei $(X\subk n, X(f))$ ein Verklebedatum. Dazu gehört die simpliziale Menge
+$\tilde X_\bullet$ mit
+\begin{align*}
+  \tilde X_n \speq{&:=} \{ (x,g) \mid x\in X\subk k,\ g:[m]\to [k] 
+    \text{ monoton, surjektiv}\}\\
+  \tilde X(f) \speq{&:=} \tilde X_m \to \tilde X_n,\ 
+    (x,g) \mapsto (X(f_1)(x), f_2)
+\end{align*}
+für $f: [n]\to [m]$ monoton, mit $g\circ f = f_1 \circ f_2$ für
+$f_1,f_2$ monoton, $f_1$ injektiv, $f_2$ surjektiv.
+
+\begin{lemma}
+  $\tildeX_\bullet$ ist in der Tat eine simpliziale Menge.
+\end{lemma}
+\begin{proof}
+  Übungsaufgabe.
+\end{proof}
+
+\begin{bemerkung}
+  Später werden wir sehen, dass
+  \[ |\tilde X_\bullet| \speq= |X| \,.\]
+\end{bemerkung}
