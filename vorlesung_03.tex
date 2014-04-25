@@ -34,7 +34,8 @@
   \end{tikzpicture}
   \quad\begin{minipage}[b]{0.3\textwidth}
     \[ f: \funcdef{ [1] &\to& [2] \\ 0&\mapsto & 0\\ 1&\mapsto & 2}\]
-    \[ g: \funcdef{ [2] &\to& [1] \\ 0&\mapsto & 0\\ 0&\mapsto & 1}\]
+    \[ g: \funcdef{ [2] &\to& [1] 
+    \\ 0&\mapsto & 0 \\ 1&\mapsto & 0 \\ 2&\mapsto & 1 }\]
     \end{minipage}
   \end{center}
 \end{beispiel}
@@ -69,6 +70,89 @@ $Y$ durch offene (bzw. abgeschlossene Teilmengen). Sei
 \begin{beispiel}
   \Bild Überdeckung der $S^1$.
   \ldots mit der geometrischen Realisierung:
+  \begin{enumerate}
+    \item 
+      Das $0$-Skelet
+      \begin{center}
+        \begin{tikzpicture}[scale=2]
+          \node[dotnode] (a)at(0,0) {} node[left] at(a) {(2)};
+          \node[dotnode] (b)at(2,0) {} node[right] at(b) {(1)};
+          \node[dotnode] (c)at(1,1) {} node[above] at(c) {(1)};
+        \end{tikzpicture}
+      \end{center}
+    \item 
+      Das $1$-Skelet
+      \begin{center}
+        \begin{tikzpicture}[scale=2]
+          \node[dotnode] (a)at(0,0) {} node[below left] at(a) {(2)};
+          \node[dotnode] (b)at(2,0) {} node[below right] at(b) {(1)};
+          \node[dotnode] (c)at(1,1) {} node[above] at(c) {(1)};
+          
+          \path[line normal] 
+            (a) to[in=135,out=135] (-0.4,-0.4) node[below left] {(2,2)}
+              to[in=-45,out=-45] (a);
+          \path[line normal] 
+            (b) to[in=45,out=45] (2.4,-0.4) node[below right] {(1,1)}
+              to[in=-135,out=-135] (b);
+          \path[line normal] 
+            (c) to[in=0,out=0] (1,1.4) node[above] {(0,0)}
+              to[in=180,out=180] (c);
+
+          \path[line normal] 
+            (a) to[bend left=20] node[below=-3pt] {(1,2)} (b)
+              to[bend left=20] node[below] {(2,1)} (a);
+          \path[line normal] 
+            (b) to[bend left=20] node[sloped,above=-3pt] {(0,1)} (c)
+              to[bend left=20] node[sloped,above] {(1,0)} (b);
+          \path[line normal] 
+            (a) to[bend left=20] node[sloped, above] {(0,2)} (c)
+              to[bend left=20] node[sloped, above=-3pt] {(2,0)} (a);
+        \end{tikzpicture}
+      \end{center}
+    \item 
+      Das $2$-Skelet
+      \begin{center}
+        \begin{tikzpicture}[scale=2]
+          \node[dotnode] (a)at(0,0) {} node[below left] at(a) {(2)};
+          \node[dotnode] (b)at(2,0) {} node[below right] at(b) {(1)};
+          \node[dotnode] (c)at(1,1) {} node[above] at(c) {(1)};
+          
+          \path[line normal, fill=purple!10] 
+            (a) to[in=135,out=135] (-0.4,-0.4) node[below left] {(2,2)}
+              to[in=-45,out=-45] (a);
+          \path[line normal, fill=purple!10] 
+            (b) to[in=45,out=45] (2.4,-0.4) node[below right] {(1,1)}
+              to[in=-135,out=-135] (b);
+          \path[line normal, fill=purple!10] 
+            (c) to[in=0,out=0] (1,1.4) node[above] {(0,0)}
+              to[in=180,out=180] (c);
+
+          \path[line normal, fill=purple!10] 
+            (a) to[bend left=20] node[below=-3pt] {(1,2)} (b)
+              to[bend left=20] node[below] {(2,1)} (a);
+          \path[line normal, fill=purple!10] 
+            (b) to[bend left=20] node[sloped,above=-3pt] {(0,1)} (c)
+              to[bend left=20] node[sloped,above] {(1,0)} (b);
+          \path[line normal, fill=purple!10] 
+            (a) to[bend left=20] node[sloped, above] {(0,2)} (c)
+              to[bend left=20] node[sloped, above=-3pt] {(2,0)} (a);
+
+          \node[below left] at(a) {(2)};
+          \node[below right] at(b) {(1)};
+          \node[above] at(c) {(1)};
+        \end{tikzpicture}
+      \end{center}
+      welches vereinfacht gemalt wie folgt aussihet
+      \begin{center}
+        \begin{tikzpicture}[scale=2]
+          \node[dotnode] (a)at(0,0) {} node[below left] at(a) {(2)};
+          \node[dotnode] (b)at(2,0) {} node[below right] at(b) {(1)};
+          \node[dotnode] (c)at(1,1) {} node[above] at(c) {(1)};
+          \path[line normal] (a) to (b) to (c) to (a);
+        \end{tikzpicture}
+      \end{center}
+  \end{enumerate}
+  \iffalse
   \begin{center}
     \begin{tikzpicture}[scale=2]
       \path (0,0) node[dotnode] (a) {} node[left]{(2), (2,2)}
@@ -85,6 +169,7 @@ $Y$ durch offene (bzw. abgeschlossene Teilmengen). Sei
           to[bend left=20] node[sloped, above=-3pt] {(2,0)} (a);
     \end{tikzpicture}
   \end{center}
+  \fi
 \end{beispiel}
 
 \begin{bemerkung}
