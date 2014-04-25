@@ -1,0 +1,208 @@
+\begin{prop}
+  Eine simpliziale Menge $\tilde X$ kann genau dann aus einem Verklebedatum $X$
+  erhalten werden, wenn für jeden nicht-degenerierten Simplex $x \in \tilde
+  X_n$ und für jede streng monotone Abbildung $f:[m]\to [n]$ der Simplex
+  $\tilde X(f)(x)$ ebenfalls nicht-degeneriert ist. In diesem Fall ist $X$ im
+  wesentlichen durch $\tilde X$ bestimmt.
+\end{prop}
+\begin{proof}
+  Übungsaufgabe.
+\end{proof}
+
+\subsubsection{Der klassifizierende Raum einer Gruppe}
+Sei $G$ eine Gruppe. Setze $(BG)_n := G^n$ und für $f:[m]\to[n]$ monoton,
+setzen wir $BG(f): G^n\to G^m,\ (g_1,\ldots,g_n)\mapsto (h_1,\ldots,h_m)$,
+wobei
+\[ h_i := \prod_{j = f(i-1)+1}^{f(i)} g_j\,.\]
+
+
+\begin{beispiel}
+  $f: [3]\to[4], 0\mapsto 0, 1,2\mapsto 2, 3\mapsto 4$ 
+  \Bild
+\end{beispiel}
+
+\begin{definition}
+  Die geometrische Realisierung $|BG|$ heißt der \emph{klassifizierende Raum
+  von $G$}.
+\end{definition}
+
+
+\subsubsection{Nicht-ausgeartete Simplizes}
+\label{subsub:nicht_ausgeartet}
+\begin{definition}[ausgearteter Simplex]
+  Sei $X$ eine simpliziale Menge. Ein $n$-Simplex $x \in X_n$ heißt 
+  \emph{ausgeartet}, falls $x = X(f)(y)$ für $f:[n]\to[m]$ mit $m<n$,
+  $y\in X_m$ und $f$ surjektiv.
+\end{definition}
+
+\begin{bem}
+  Ist $x$ nicht-ausgeartet und $x = X(f)(y)$ für ein $f$ und $y$, so ist
+  $f$ eine Injektion. Ansonsten zerlege $f = f_1\circ f_2$ mit $f_1$ injektiv
+  und $f_2$ surjektiv. Damit $x = X(f_1\circ f_2)(y) = X(f_2)(X(f_1)(y))$.
+\end{bem}
+
+Ist $X$ eine simpliziale Menge, so sei 
+$X\subk n := \{ x\in X_n \mid x\text{ nicht-ausgeartet}\}$ und
+\begin{center}
+  \begin{tikzcd}
+    \tau: \coprod_{n\geq 0} \Delta_n \times X_n \rar & {} |X| \\
+    \coprod_{n\geq 0} \mathring\Delta_n \times X\subk n
+    \uar[hookrightarrow] \urar{\mathring\tau}
+  \end{tikzcd}
+\end{center}
+
+\begin{prop}
+  \label{prop:tauo_bijektion} 
+  $\mathring\tau$ ist eine Bijektion.
+\end{prop}
+
+Um diese Proposition zu beweisen, brauchen wir einige Lemmas.
+
+\begin{lemma}
+  \label{lemma:ex_eind_paar}
+  Für jedes $x \in X_n$ existiert ein eindeutiges Paar $(f,y)$, mit
+  $y \in X\subk m$, $f:[n]\to[m]$ monoton, surjektiv, so dass $x = X(f)(y)$.
+\end{lemma}
+\begin{proof}
+  Die Existenz folgt aus der Definition von $X\subk m$.
+  Zur Eindeutigkeit: Seien $(f,y)$, $f:[n]\to[m]$ und $(f',y')$,
+  $f':[n]\to [m']$ zwei solcher Paare mit $x = X(f)(y) = X(f')(y')$.
+  Sei $g:[m]\to[n]$ ein monotoner Schnitt von $f$, d.h. 
+  $f\circ g = \id_{[m]}$. Dann ist 
+  \[ y = X(\id)(y) = X(f\circ g)(y) = X(g)X(f)(y) = X(g)(x). \]
+  Damit $y = X(g)X(f')(y') = X(f'\circ g)(y')$.
+  Da $y$ nicht-entartet ist, ist $f'\circ g:[m]\to [m']$ eine Injektion, so
+  dass $m\leq m'$. Analog $m'\leq m$, also $m = m'$. Damit ist
+  $f'\circ g$ eine monotone Injektion von $[m]$ nach $[m]$, also
+  $f'\circ g = \id_{[m]}$, also $y = y'$. Da $f'\circ g = \id$ für alle
+  Schnitte $g$ von $f$, folgt $f' = f$.
+\end{proof}
+
+
+\begin{folgerung}
+  \label{folgerung:aufteilen_in_surj_inj}
+  Sei $x \in X_n$ ein $n$-Simplex, $y\in X_m$ nicht-entartet, 
+  $f:[n]\to[m]$ eine monotone Surjektion mit $x = X(f)(y)$. Sei weiter 
+  $z \in X_l$ und $g: [n]\to[l]$ eine monotone Surjektion mit $x=X(g)(z)$. Dann
+  faktorisiert $f$ als $f = h\circ g$ mit einem $h:[l]\to[m]$, so dass
+  $z = X(h)(y)$.
+\end{folgerung}
+\begin{proof}
+  Sei $(h',y')$ das Paar aus \cref{lemma:ex_eind_paar} mit $z = X(h')(y')$.
+  Dann ist $x = X(g)(z) = X(g)(X(h')(y')) = X(h'\circ g)(y')$. Damit ist
+  $h'\circ g = f$ und $y = y'$. Setze $h:= h'$.
+\end{proof}
+
+\paragraph{Beweis von \cref{prop:tauo_bijektion}}
+
+\begin{proof}[von \cref{prop:tauo_bijektion}]
+  \begin{enumerate}
+    \item $\mathring\tau$ ist surjektiv: Sei $p\in |X|$. Sei
+      $k$ die kleinste Dimension, so dass ein $(s,x) \in\Delta_k\times X_k$ mit
+      $\tau(s,x) = p$ existiert. Wir wollen nun zeigen, dass
+      $(s,x) \in \mathring\Delta_k \times X\subk k$: Ist $k=0$, so ist 
+      $\Delta_0 = \mathring\Delta_0$ und $X\subk 0 = X_0$, also nichts zu
+      zeigen. Ist $x$ uasgeartet, so ist $x = X(f)(y)$, $f:[k]\to[l]$ monoton,
+      $l < k$. Dann ist $\tau(s,x) = \tau(\Delta_f(s),y)$. Widerspruch zur
+      Minimalität von $k$. Also $x \in X\subk k$. Ist
+      $s\notin\mathring\Delta_k$, so existiert ein injektives $f:[l]\to[k]$
+      monoton mit $s = \Delta_f(t)$ für $t\in \Delta_l$. Damit 
+      $\tau(s,x) = \tau(\Delta_f(t),x) = \tau(t,X(f)(x))$ im Widerspruch zu 
+      $l<k$.
+    \item $\mathring\tau$ ist injektiv: Seien 
+      $(s,x) \in \mathring\Delta_k \times X\subk k$,
+      $(s',x')\in\mathring\Delta_l\times X\subk l$ mit $\tau(s,x) =
+      \tau(s',x') (\ast)$, so ist zu zeigen, dass $s = s'$ und $x = x'$.
+      Wegen $(\ast)$ existiert 
+      \[ (s,x) = (s_0,x_0) \sim (s_1,x_1) \sim \ldots\sim (s_N,x_N) = (s',x')\]
+      wobei $\sim$ für $(s_i,x_i) \overset{f_i^+}{\mapsto} (s_{i+1},x_{i+1})$
+      oder $(s_i,x_i) \overset{f_i^-}{\leftmapsto} (s_{i+1},x_{i+1})$ 
+      steht. Ohne Einschränkung können wir ``Zickzack'' annehmen.
+      Wir zeigen: Ist $N=1$, so ist $f_0 = \id$ und ist $N>1$, so existiert
+      eine kürzere Kette.
+    \item Beh: Da $(s,x)\in\mathring\Delta_k \times X\subk k$, so ist
+      $f_0^+$ eine Injektion und $f_0^-$ eine Surjektion.
+      Im Fall $f_0^+$ ist $x = X(f_0^+)(x_1)$. Dann ist $f_0^+$ eine Injektion
+      nach \autoref{subsub:nicht_ausgeartet}. Im Fall $f_0^-$ ist
+      $s = \Delta_{f_0^-}(s_1)$. Da $s \in \mathring\Delta_k$, muss $f_0^-$
+      surjektiv sein. Wir folgern: $N=1$.\autoref{subsub:nicht_ausgeartet}. Im
+      Fall $f_0^-$ sit
+      $s = \Delta_{f_0^-}(s_1)$. Da $s \in \mathring\Delta_k$, muss $f_0^-$
+      surjektiv sein. Wir folgern: Für $N=1$ ist $f_0^- / f_0^+$ ist injektiv
+      und surjektiv, also gleich $\id$.
+    \item Für $N\geq 2$ betrachte
+      \begin{center}
+        \begin{tikzcd}
+          (s_i,x_i) \rar[mapsto]{f_i^+} & (s_{i+1},x_{i+1}) &
+            (s_{i+2},x_{i+2}) \lar[mapsto]{f_{i+1}^-}\\[5pt]
+          {}[m_i] \rar &{} [m_{i+1}] &{} [m_{i+2}] \lar
+        \end{tikzcd}
+      \end{center}
+      Sei außerdem $f_i^+$ injektiv. Wir zeigen, dass dann folgende Kette
+      existiert:
+      \begin{center}
+        \begin{tikzcd}
+          (s_i,x_i) & (s_{i+1},x_{i+1}) \lar[mapsto]{g} \rar[mapsto]{h}&
+            (s_{i+2},x_{i+2})\\
+          {}[m_i] \rar &{} [m_{i+1}] &{} [m_{i+2}] \lar
+        \end{tikzcd}
+      \end{center}
+      Sei $ I:=(f_{i+1}^-)\inv(f_i^+([m_i]))$, $l:= |I| -1$. Sei 
+      $h:[l]\to[m_{i+2}]$ die injektive monotone Abbildung mit Bild $I$
+      Dann existiert genau ein $g:[l]\to[m_i]$ mit $f_i^+\circ g = 
+      f_{i+1}^- \circ h$. Da $\im h=I$, ist 
+      $\im\Delta_h = (\Delta_{f_{i+1}^-)\inv(\Delta_{f_i^-}(\Delta_{m_i}))$.
+      Da $\Delta_{f_{i+1}^-}(s_{i+2}) = s_{i+1} = \Delta_{f_i^+}(s_i)$,
+      existiert ein $t\in \Delta_l$ mit $\Delta_h(t) = s_{i+2}$. Außerdem:
+      \[ \Delta_{f_i^+}(\Delta_g(t)) = \Delta_{f_{i+1}^-}(\Delta_h(t))
+        = s_{i+1} = \Delta_{f_i^+}(s_i)\]
+      Da $\Delta_{f_i^+}$ injektiv, folgt $\Delta_g(t) = s_i$. Setze
+      $y := X(h)(x_{i+2}) = X(g)(x_i)$.
+    \item Sei $N\geq 2$, so beginnt die Kette mit 
+      $(s,x) \overset{f_0^+}{\mapsto} (s_1,x_1) \overset{f_1^-}\leftmapsto
+      (s_2,x_2)$, so ist $f_0^+$ nach (4) eine Injektion. Nach (3) erhalten wir
+      dann eine Kette der Länge 2 (für $N=2$ oder $N-1$ für $N\geq 3$) der Form
+      \[ (s_0,x_0) \overset{f_0^-}{\leftmapsto} (s_1,x_1) 
+        \overset{f_1^+}{\mapsto} (s_2,x_2)\]
+      Nach (4) ist $f_0^-$ eine Surjektion.
+    \item Ist $N = 2$, also $(s_2,x_2) \in \mathring\Delta_l\times X\subk l$,
+      so ist $f_1^+$ surjektiv nach (3).
+      Da $x_0,x_2$ nicht-ausgeartet, folgt nach \cref{lemma:ex_eind_paar}, dass
+      $f_0^- = f_1^+$ und $x_0 = x_2$, also $s_0 = s_2$.
+    \item Sei also $N\geq 3$. Schreibe $f_1^+ = i\circ p$, wobei 
+      $p:[m_1] \to[l]$ monotone Surjektion und $i:[l]\to[m_2]$ monotone
+      Injektion. Da $x_0$ nicht-ausgeartet und $f_0^-$ surjektiv, existiert
+      nach \cref{folgerung:aufteilen_in_surj_inj} 
+      eine Faktorisierung $f_0^- = g \circ p$ für ein 
+      $g:[l]\to[k]$. Damit ersetzen wir 
+      $(s_0,x_0)\overset{f_0^-}{\leftmapsto} (s_1,x_1) \overset{f_1^+}{\mapsto}
+      (s_2,x_2)$ durch
+      \[ (s_0,x_0) \overset{g}{\leftmapsto} (\Delta_p(s_1, X(g)(x_0))
+        \overset{i}{\mapsto} (s_2,x_2)\,,\]
+      d.h. ohne Einschränkung ist $f_1^+$ eine Injektion. Nach (4) können wir
+      also $(s_1,x_1) \overset{f_1^+}{\mapsto} (s_2,x_2) 
+      \overset{f_2^-}{\leftmapsto} (s_3,x_3)$ durch
+      $(s_1,x_1) \overset{f_1^-}{\leftmapsto} (s_2,x_2)
+      \overset{f_2^+}{\mapsto} (s_3,x_3)$ ersetzen und wir erhalten eine Kette
+      der Länge $N-2$.
+  \end{enumerate}
+\end{proof}
+
+\begin{folgerung}
+  Sei $|X|$ ein triangulierter Raum mit Verklebedatum $(X\subk n, X(f))$. Sei
+  $\tilde X$ die dazugehörige simpliziale Menge Dann $|\tilde X| = |X|$.
+\end{folgerung}
+\begin{proof}
+  \makebox{}
+  \begin{center}
+    \begin{tikzcd}
+      \coprod_{n\geq 0} \Delta_n\times \tilde X_n \dar
+        \rar{(s,\tilde x) = (s,g) \mapsto (\Delta_g(s),x)}
+        &[4cm] \coprod_{n\geq 0} \Delta_n \times X\subk n \dar
+        \\ {}
+      |\tilde X| \rar[dashed]{\varphi}
+        &{} |X|
+    \end{tikzcd}
+  \end{center}
+  Dann ist nach Übungsaufgabe $\varphi$ ein Homöomorphismus.
+\end{proof}

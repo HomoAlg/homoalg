@@ -119,6 +119,7 @@ chapterprefix=true
 \newtheorem{kor}[satz]{Korollar}
 \newtheorem{prop}[satz]{Proposition}
 \newtheorem{algorithmus}[satz]{Algorithmus}
+\newtheorem{folgerung}[satz]{Folgerung}
 
 
 \theoremstyle{plain}
@@ -151,6 +152,7 @@ chapterprefix=true
 \crefname{algorithmus}{Algorithmus}{Algorithmen}
 \crefname{kor}{Korollar}{Korollare}
 \crefname{satz}{Satz}{Sätze}
+\crefname{folgerung}{Folgerung}{Folgerungen}
 
 %% Amsmath options %%%%%%%%%%%%%%%%%
 \numberwithin{equation}{chapter}
@@ -161,6 +163,7 @@ chapterprefix=true
 \addtokomafont{pagenumber}{\sffamily}
 \addtokomafont{pagehead}{\sffamily\upshape}
 \pagestyle{scrheadings}
+\setcounter{secnumdepth}{5}
 
 
 %% titlesec %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -300,7 +303,7 @@ chapterprefix=true
 \input{vorlesung_01}
 \input{vorlesung_02}
 \input{vorlesung_03}
-%\input{vorlesung_04}
+\input{vorlesung_04}
 %\input{vorlesung_05}
 %\input{vorlesung_06}
 %\input{vorlesung_07}
