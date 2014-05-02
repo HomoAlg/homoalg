@@ -119,3 +119,55 @@ Topologie auf $Z$ tragen, sind diese Bijektionen Homöomorphismen.
   allen $n$-Simplizes erzeugt wird.
 \end{definition}
 
+
+\begin{definition}
+  Der \emph{Rand einer $n$-Kette} $c\in C_n(X)$ ist die $(n-1)$-Kette
+  $\d_n c$, definiert durch
+  \[ \d_n\left( \sum_{x\in X_n} a(x) x \right) \speq{:=}
+    \sum_{x\in X_n} a(x) \sum_{i=0}^n (-1)^i X(\dell_n^i)(x)\]
+  Damit ist der \emph{Randoperator} $\d_n:C_n(X)\to C_{n-1}(X)$ ein
+  Gruppenhomomorphismus. Für $n=0$ setze $C_{-1}(X) = 0$, $\d_0 = 0$.
+\end{definition}
+
+\begin{bemerkung}
+  Anstelle von $\Z$ hätten wir auch Koeffizienten in einer beliebigen
+  abelschen Gruppe $A$ verwenden können:
+  $C_n(X,A) := C_n(X)\otimes_\Z A$, insb. $C_n(X) = C_n(X,\Z)$.
+  und $\d_n. C_n(X,A) \to C_{n-1}(X,A)$ ist ein $A$-Modulhomomorphismus.
+\end{bemerkung}
+
+
+\begin{definition}
+  Eine \emph{$n$-Kokette (mit Koeffizienten in $A$)} ist ein Element in
+  \[ C^n(X,A) \speq{:=} \{ f: X_n \to A\ \text{Abbildung}\}\]
+  Der \emph{Korandoperator} $\d^n: C^n(X,A) \to C^{n+1}(X,A)$ ist definiert
+  durch 
+  \[ \d^n(f)(x) \speq{:=} \sum_{i=0}^{n+1} (-1)^i f(X(\dell_{n+1}^i(x)))\]
+  für $x \in X_{n+1}$.
+\end{definition}
+
+
+\begin{bemerkung}
+  Man kann $C_n(X,A) \hookrightarrow C^n(X,A)$ sehen, was aber nur unter
+  Vorsicht zu genießen ist. Sie sind nämlich bezüglich Rand- und Korandoperator
+  nicht verträglich!
+\end{bemerkung}
+
+
+\begin{lemmea}
+  \begin{enumerate}[label=(\alph*)]
+    \item $\d_{n-1}\circ \d_n= 0$.
+    \item $\d^{n+1}\circ \d^n=0$.
+  \end{enumerate}
+\end{lemmea}
+\begin{proof}
+  Für $0\leq j< i\leq n-1$ ist 
+  $\dell_n^i\circ \dell_{n-1}^j = \dell_n^j\circ\dell_{n-1}^{i-1}:
+  [n-2]\to[n]$ mit $i,j\notin \im$.
+  \begin{align*}
+    \d_{n-1}(\d_n(x)) &= \sum_{j=0}^{n-1}\sum_{i=0}^n (-1)^{i+j}
+     X(\dell_{n-1}^j)X(\dell_n^i)(x) \\
+    &= \sum_{j=0}^{n-1}\sum_{i=0}^n (-1)^{i+j} X(\dell_n^i\circ
+    \dell_{n-1}^j)(x) = 0
+  \end{align*}
+\end{proof}
