@@ -1,0 +1,121 @@
+\subsubsection{Aufeinanderfolgende Faktorisierungen}
+\marginpar{Tiefe der Nummerierung unklar!}
+
+$Z$ sei beliebige Menge, $R_1,R_2$ zwei Äquivalenzrelationen auf $Z$. Sei
+$R$ die von $R_1,R_2$ erzeugte Äquivalenzrelationen.
+Sei $R_1/R_2$ folgende Äquivalenzrelationen auf $Z/R_1$:
+\[ (x \bmod R_1) \overset{R_2/R_1}{\sim} (y \bmod R_1) 
+  \speq{:\Leftrightarrow} \exists x',y'\in Z:\ 
+  x'\sim y' \bmod R_2,\ x'\sim x\bmod R_1\ y'\sim y\bmod R_1\,.\]
+Dann sind
+\begin{enumerate}[label=\alph*)]
+  \item $(Z/R_1)\big/(R_2/R_1)$,
+  \item $(Z/R_2)\big/ (R_1/R_2)$ und 
+  \item $Z/R$
+\end{enumerate}
+kanonisch bijektiv und falls a),b),c) die Quotiententopologie bzgl. einer
+Topologie auf $Z$ tragen, sind diese Bijektionen Homöomorphismen.
+
+\begin{lemma}
+  Sei $R$ die von $R\I$, $R\II$ erzeugte Äquivalenzrelationen. Dann ist
+  \[ Z\big/ R \speq\cong \coprod_{k\geq 0} (X_{kk} \times \Delta_k)
+  \quad\text{und}\quad (Z/R)\big/(R\D/R) \cong |X|\D\]
+\end{lemma}
+\begin{proof}
+  Sei $\tilde p: Z \to \coprod_{k\geq 0}(X_{kk}\times \Delta_k)$, 
+  $(x,(f,g),s) \mapsto (X(f,g)(x),s)$.
+  $R\I$ und $R\II$-äquivalente Punkte haben das selbe Bild unter $\tilde
+  p$. Damit erhalten wir ein wohldefiniertes $p: Z/R \to \coprod_{k\geq 0}
+  (X_{kk}\times \Delta_k)$. Betrachte
+  \[\tilde i:\coprod_{k\geq 0} (X_{kk}\times \Delta_k) \to Z,\ 
+    (x,s)\mapsto (x, (\id,\id),s)\,. \]
+  und $i = (Z\to Z/R) \circ i$.
+  Dann ist $p\circ i = \id$. Damit ist $p$ surjektiv. 
+  Jeder Punkt $(x,(f,g),s)$ ist $R$-äquivalent zu $(X(f,g)x, (\id,\id),s)$.
+  Damit ist $p$ auch injektiv, also ein Homöomorphismus.
+  
+  Berechnung von $R\D/R$ auf $Z/R$:
+  \begin{center}
+    \begin{tikzcd}
+      (x,(f,g),s) \rar[mapsto]{p} \dar[leftrightarrow]{\sim_h}
+        & (X(f,g)(x),s) \dar[leftrightarrow]{\sim_{R\D/R}} 
+        \rar[equal] &[-25pt]  
+        (X(h,h) \circ X(f',g')(x),s)  \\
+      (X, (f',g'),s') \rar[mapsto]{p} &
+        (X(f',g')(x),s') \rar[equal] & (X(f',g')(x), \Delta_h(s))
+    \end{tikzcd}
+  \end{center}
+  D.h. $R\D/R: (X(h,h)(x),s) \sim (x,\Delta_h(s))$ und es folgt
+  $\coprod_{k\geq 0} X_{kk} \times \Delta_k = |X|\D$.
+\end{proof}
+
+
+\begin{lemma}
+  \label{lemma:11}
+  Die geometrische Relaisierung $|D[m,n]|$ ist kanonisch homöomorph zu
+  $\Delta_m\times \Delta_n$.
+\end{lemma}
+\begin{proof}
+  Einem $k$-Simplex in $D[m,n]$, d.h. einem Paar $(f,g)$ monotoner
+  Abbildungen $f:[k]\to[m]$, $g:[k]\to [n]$, ordnen wir das $(k+1)$-Tupel
+  $((i_0,j_0),\ldots,(i_k,j_k))$ mit $i_l = f(l)$, $j_l=g(l)$ für 
+  $0\leq l\leq k$ zu. Der Simplex $(f,g)$ ist genau dann nicht-degeneriert,
+  wenn alle Paare verschieden sind. Außerdem: Ist $h:[k']\to[k]$ injektiv und
+  $(f,g)$ nicht ausgeartet, so ist $D[m,n](h)(f,g) = (f\circ h, g\circ h)$
+  ebenfalls nicht ausgeartet. Damit ist
+  \[|D[m,n]| = |\text{Verklebedatum der nicht-ausgearten Simplizes}|
+    \cong \Delta_m\times\Delta_n\]
+\end{proof}
+
+
+\begin{folgerung}
+  Es gilt: 
+  \[ Z\big/ R\D \speq\cong \coprod_{m,n} X_{m,n}\times \Delta_m 
+    \times \Delta_n\]
+  und
+  \[ R\I \big/R\D: (x,s,t) \sim(x',s',t),
+    \text{ falls } s'=\Delta_h(s),\ x = X(h,\id)(x')\,,\]
+  für ein monotones $h$. $R\II/R\D$ analog.
+\end{folgerung}
+\begin{proof}
+  $Z/R\D \cong\coprod_{m,n\geq 0} X_{m,n} \times (\Delta_m\times \Delta_n)$
+  ist \thref{lemma:11}.
+  \[ F_h: D[m,n]_h \to D[m',n]_h,\ (f,g) \mapsto (h\circ f, g)\]
+  so ist 
+  \begin{center}
+  \begin{tikzcd}
+    {|F_h|}: &[-20pt] {|D[m,n]|} \dar{\cong} \rar & {|D[m',n]|} \dar{\cong}
+    \\
+    & \Delta_m \times\Delta_n \rar{\Delta_n\times\Delta_\id} &
+      \Delta_{m'} \times\Delta_n
+  \end{tikzcd}
+  \end{center}
+\end{proof}
+
+
+\begin{notation}
+  \begin{itemize}
+    \item $\tilde Z := Z/R\D$
+    \item $\tilde R\I := R\I / R\D$
+    \item $\tilde R\II := R\II / R\D$
+\end{notation}
+
+\begin{folgerung}
+  Es gilt
+  \[ (\tilde Z / \tilde R\I)\big/ (\tilde R\II/\tilde R\I) 
+    \speq= |X|\I \quad\text{und}\quad
+    (\tilde Z/\tilde R\II) \big/ (\tilde R\I / \tilde R\II) 
+    \speq= |X|\II.\]
+\end{folgerung}
+
+
+\section{Homologie und Kohomologie}
+
+\subsection{Ketten und Koketten}
+
+\begin{definition}
+  Eine \emph{$n$-dimensionale Kette} (\emph{$n$-Kette}) einer simplizialen
+  Menge $X$ ist ein Element der freien abelschen Gruppe $C_n(X)$, welche von
+  allen $n$-Simplizes erzeugt wird.
+\end{definition}
+
