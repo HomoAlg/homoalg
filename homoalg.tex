@@ -262,7 +262,10 @@ chapterprefix=true
 \usepackage{biblatex}
 \addbibresource{literatur.bib}
 
-
+%% Setze Numerierungsstiel %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand\thechapter{\Roman{chapter}}
+\renewcommand\thesection{§ \arabic{section}}
+\renewcommand\thesubsection{\arabic{subsection}}
 
 
 \begin{document}
@@ -299,6 +302,8 @@ chapterprefix=true
 
 
 \cleardoubleemptypage
+
+\setcounter{tocdepth}{4}
 \tableofcontents
 
 %% Der Text %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
