@@ -4,13 +4,13 @@
 $Z$ sei beliebige Menge, $R_1,R_2$ zwei Äquivalenzrelationen auf $Z$. Sei
 $R$ die von $R_1,R_2$ erzeugte Äquivalenzrelationen.
 Sei $R_1/R_2$ folgende Äquivalenzrelationen auf $Z/R_1$:
-\[ (x \bmod R_1) \overset{R_2/R_1}{\sim} (y \bmod R_1) 
-  \speq{:\Leftrightarrow} \exists x',y'\in Z:\ 
+\[ (x \bmod R_1) \overset{R_2/R_1}{\sim} (y \bmod R_1)
+  \speq{:\Leftrightarrow} \exists x',y'\in Z:\
   x'\sim y' \bmod R_2,\ x'\sim x\bmod R_1\ y'\sim y\bmod R_1\,.\]
 Dann sind
 \begin{enumerate}[label=\alph*)]
   \item $(Z/R_1)\big/(R_2/R_1)$,
-  \item $(Z/R_2)\big/ (R_1/R_2)$ und 
+  \item $(Z/R_2)\big/ (R_1/R_2)$ und
   \item $Z/R$
 \end{enumerate}
 kanonisch bijektiv und falls a),b),c) die Quotiententopologie bzgl. einer
@@ -22,24 +22,24 @@ Topologie auf $Z$ tragen, sind diese Bijektionen Homöomorphismen.
   \quad\text{und}\quad (Z/R)\big/(R\D/R) \cong |X|\D\]
 \end{lemma}
 \begin{proof}
-  Sei $\tilde p: Z \to \coprod_{k\geq 0}(X_{kk}\times \Delta_k)$, 
+  Sei $\tilde p: Z \to \coprod_{k\geq 0}(X_{kk}\times \Delta_k)$,
   $(x,(f,g),s) \mapsto (X(f,g)(x),s)$.
   $R\I$ und $R\II$-äquivalente Punkte haben das selbe Bild unter $\tilde
   p$. Damit erhalten wir ein wohldefiniertes $p: Z/R \to \coprod_{k\geq 0}
   (X_{kk}\times \Delta_k)$. Betrachte
-  \[\tilde i:\coprod_{k\geq 0} (X_{kk}\times \Delta_k) \to Z,\ 
+  \[\tilde i:\coprod_{k\geq 0} (X_{kk}\times \Delta_k) \to Z,\
     (x,s)\mapsto (x, (\id,\id),s)\,. \]
   und $i = (Z\to Z/R) \circ i$.
-  Dann ist $p\circ i = \id$. Damit ist $p$ surjektiv. 
+  Dann ist $p\circ i = \id$. Damit ist $p$ surjektiv.
   Jeder Punkt $(x,(f,g),s)$ ist $R$-äquivalent zu $(X(f,g)x, (\id,\id),s)$.
   Damit ist $p$ auch injektiv, also ein Homöomorphismus.
-  
+
   Berechnung von $R\D/R$ auf $Z/R$:
   \begin{center}
     \begin{tikzcd}
       (x,(f,g),s) \rar[mapsto]{p} \dar[leftrightarrow]{\sim_h}
-        & (X(f,g)(x),s) \dar[leftrightarrow]{\sim_{R\D/R}} 
-        \rar[equal] &[-25pt]  
+        & (X(f,g)(x),s) \dar[leftrightarrow]{\sim_{R\D/R}}
+        \rar[equal] &[-25pt]
         (X(h,h) \circ X(f',g')(x),s)  \\
       (X, (f',g'),s') \rar[mapsto]{p} &
         (X(f',g')(x),s') \rar[equal] & (X(f',g')(x), \Delta_h(s))
@@ -58,7 +58,7 @@ Topologie auf $Z$ tragen, sind diese Bijektionen Homöomorphismen.
 \begin{proof}
   Einem $k$-Simplex in $D[m,n]$, d.h. einem Paar $(f,g)$ monotoner
   Abbildungen $f:[k]\to[m]$, $g:[k]\to [n]$, ordnen wir das $(k+1)$-Tupel
-  $((i_0,j_0),\ldots,(i_k,j_k))$ mit $i_l = f(l)$, $j_l=g(l)$ für 
+  $((i_0,j_0),\ldots,(i_k,j_k))$ mit $i_l = f(l)$, $j_l=g(l)$ für
   $0\leq l\leq k$ zu. Der Simplex $(f,g)$ ist genau dann nicht-degeneriert,
   wenn alle Paare verschieden sind. Außerdem: Ist $h:[k']\to[k]$ injektiv und
   $(f,g)$ nicht ausgeartet, so ist $D[m,n](h)(f,g) = (f\circ h, g\circ h)$
@@ -69,8 +69,8 @@ Topologie auf $Z$ tragen, sind diese Bijektionen Homöomorphismen.
 
 
 \begin{folgerung}
-  Es gilt: 
-  \[ Z\big/ R\D \speq\cong \coprod_{m,n} X_{m,n}\times \Delta_m 
+  Es gilt:
+  \[ Z\big/ R\D \speq\cong \coprod_{m,n} X_{m,n}\times \Delta_m
     \times \Delta_n\]
   und
   \[ R\I \big/R\D: (x,s,t) \sim(x',s',t),
@@ -81,7 +81,7 @@ Topologie auf $Z$ tragen, sind diese Bijektionen Homöomorphismen.
   $Z/R\D \cong\coprod_{m,n\geq 0} X_{m,n} \times (\Delta_m\times \Delta_n)$
   ist \thref{lemma:11}.
   \[ F_h: D[m,n]_h \to D[m',n]_h,\ (f,g) \mapsto (h\circ f, g)\]
-  so ist 
+  so ist
   \begin{center}
   \begin{tikzcd}
     {|F_h|}: &[-20pt] {|D[m,n]|} \dar{\cong} \rar & {|D[m',n]|} \dar{\cong}
@@ -102,9 +102,9 @@ Topologie auf $Z$ tragen, sind diese Bijektionen Homöomorphismen.
 
 \begin{folgerung}
   Es gilt
-  \[ (\tilde Z / \tilde R\I)\big/ (\tilde R\II/\tilde R\I) 
+  \[ (\tilde Z / \tilde R\I)\big/ (\tilde R\II/\tilde R\I)
     \speq= |X|\I \quad\text{und}\quad
-    (\tilde Z/\tilde R\II) \big/ (\tilde R\I / \tilde R\II) 
+    (\tilde Z/\tilde R\II) \big/ (\tilde R\I / \tilde R\II)
     \speq= |X|\II.\]
 \end{folgerung}
 
@@ -141,7 +141,7 @@ Topologie auf $Z$ tragen, sind diese Bijektionen Homöomorphismen.
   Eine \emph{$n$-Kokette (mit Koeffizienten in $A$)} ist ein Element in
   \[ C^n(X,A) \speq{:=} \{ f: X_n \to A\ \text{Abbildung}\}\]
   Der \emph{Korandoperator} $\d^n: C^n(X,A) \to C^{n+1}(X,A)$ ist definiert
-  durch 
+  durch
   \[ \d^n(f)(x) \speq{:=} \sum_{i=0}^{n+1} (-1)^i f(X(\dell_{n+1}^i(x)))\]
   für $x \in X_{n+1}$.
 \end{definition}
@@ -161,7 +161,7 @@ Topologie auf $Z$ tragen, sind diese Bijektionen Homöomorphismen.
   \end{enumerate}
 \end{lemmea}
 \begin{proof}
-  Für $0\leq j< i\leq n-1$ ist 
+  Für $0\leq j< i\leq n-1$ ist
   $\dell_n^i\circ \dell_{n-1}^j = \dell_n^j\circ\dell_{n-1}^{i-1}:
   [n-2]\to[n]$ mit $i,j\notin \im$.
   \begin{align*}
